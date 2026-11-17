@@ -10,27 +10,41 @@
 
 def two_sum(nums, target):
     # Outline (write your plan here first):
+    # my plan is to loop over the list twice the first time by putting the first num in a variable and 
+    # second loop is basically one after the first one and check if they add up t target while i still being less than j 
+
     #   ...
-    # TODO: return the indices [i, j] (i < j) of the two numbers in `nums` that add up
-    #   to `target`. Assume there is exactly one answer.
-    pass
+    result = []
+    for i in range(len(nums) - 1 ):
+        for j in range(i + 1, len(nums) ):
+            if nums[i] + nums[j]  == target and i < j:
+                return [i,j]
+     
 
 
 def max_profit(prices):
-    # Outline:
-    #   ...
-    # TODO: `prices[i]` is a stock price on day i. Return the most profit obtainable by
-    #   buying on one day and selling on a LATER day. If no profit is possible, return 0.
-    pass
+    profit = 0
+    for i in range(len(prices) -1 ):
+       for j in range(i + 1, len(prices)):
+           if prices[j] - prices[i] > profit:
+               profit = prices[j] - prices[i]
+    return profit
+
 
 
 def max_subarray(nums):
-    # Outline:
-    #   ...
-    # TODO: return the largest sum of any contiguous (in-a-row) block of numbers in
-    #   `nums`. The list has at least one number.
-    pass
+    max_sum = nums[0]
 
+    for i in range(len(nums)):
+        current_sum = 0
+
+        for j in range(i, len(nums)):
+            current_sum += nums[j]
+
+            if current_sum > max_sum:
+                max_sum = current_sum
+
+    return max_sum
 
 def is_balanced(s):   # Part 4 - stretch (optional)
     # Outline:
